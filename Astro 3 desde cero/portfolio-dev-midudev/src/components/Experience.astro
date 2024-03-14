@@ -1,0 +1,14 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import EXPERIENCE from "@/assets/data/ExperienceData.json";
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>

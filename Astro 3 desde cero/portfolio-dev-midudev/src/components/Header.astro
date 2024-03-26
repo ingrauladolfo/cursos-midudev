@@ -1,6 +1,33 @@
 ---
-import navItems from "@/assets/data/navItems.json";
 import ThemeToggle from "./ThemeToggle.astro";
+import LanguagePicker from "@/components/LanguagePicker.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { currentLocale } = Astro;
+const navItems = [
+  {
+    title: t("nav.home"),
+    label: "experiencia",
+    url: currentLocale === "en" ? "/en/#experiencia" : "/#experiencia",
+  },
+  {
+    title: t("nav.projects"),
+    label: "proyectos",
+    url: currentLocale === "en" ? "/en/#proyectos" : "/#proyectos",
+  },
+  {
+    title: t("nav.about"),
+    label: "sobre-mi",
+    url: currentLocale === "en" ? "/en/#sobre-mi" : "/#sobre-mi",
+  },
+  {
+    title: t("nav.contact"),
+    label: "contacto",
+    url: "mailto:miduga@gmail.com",
+  },
+];
 ---
 
 <header
@@ -21,6 +48,7 @@ import ThemeToggle from "./ThemeToggle.astro";
       ))
     }
     <ThemeToggle />
+    <LanguagePicker />
   </nav>
 </header>
 
